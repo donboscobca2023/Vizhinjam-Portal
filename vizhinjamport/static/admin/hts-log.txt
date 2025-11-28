@@ -1,0 +1,22 @@
+HTTrack3.49-2+htsswf+htsjava launched on Sat, 19 Apr 2025 14:25:07 at https://themewagon.github.io/kaiadmin-lite/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://themewagon.github.io/kaiadmin-lite/ -O1 "C:\My Web Sites\admin" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/profile.html (from https://themewagon.github.io/kaiadmin-lite/)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/assets/css/owl.video.play.png (from https://themewagon.github.io/kaiadmin-lite/assets/css/plugins.min.css)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/components/profile.html (from https://themewagon.github.io/kaiadmin-lite/components/avatars.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/components/index.html (from https://themewagon.github.io/kaiadmin-lite/components/notifications.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/single-group.php (from https://themewagon.github.io/kaiadmin-lite/sidebar-style-2.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/single-event.php (from https://themewagon.github.io/kaiadmin-lite/sidebar-style-2.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/forms/profile.html (from https://themewagon.github.io/kaiadmin-lite/forms/forms.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/tables/profile.html (from https://themewagon.github.io/kaiadmin-lite/tables/tables.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/tables/index.html (from https://themewagon.github.io/kaiadmin-lite/tables/tables.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/maps/profile.html (from https://themewagon.github.io/kaiadmin-lite/maps/googlemaps.html)
+14:25:28	Error: 	"Not Found" (404) at link https://themewagon.github.io/kaiadmin-lite/charts/profile.html (from https://themewagon.github.io/kaiadmin-lite/charts/charts.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 21 seconds : 84 links scanned, 72 files written (3951404 bytes overall) [1855890 bytes received at 88375 bytes/sec], 2850094 bytes transferred using HTTP compression in 64 files, ratio 20%, 42.0 requests per connection
+(11 errors, 0 warnings, 0 messages)

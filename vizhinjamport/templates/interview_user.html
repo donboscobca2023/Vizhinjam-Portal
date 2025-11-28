@@ -1,0 +1,42 @@
+{% extends 'user_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3 border-0">
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0">Interview Details</h4>
+        </div>
+        <div class="card-body">
+            {% if tenders %}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Job Name</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Current Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tender in tenders %}
+                            <tr>
+                                <td>{{ tender.job_id.name }}</td>
+                                <td>{{ tender.time }}</td>
+                                <td>{{ tender.date }}</td>
+                                <td>{{ tender.discription }}</td>
+                                <td>{{ tender.currentdate }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-muted">No interview details available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

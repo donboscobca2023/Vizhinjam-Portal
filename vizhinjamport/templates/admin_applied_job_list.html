@@ -1,0 +1,56 @@
+{% extends 'admin_header.html' %}
+    {% block content %}
+
+    <!-- <h1>Applied Job List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Job Name</th>
+            <th>Applicant Name</th>
+            <th>Qualification</th>
+            <th>Certificate</th>
+            <th>current date</th>
+            <th>approve</th>
+            <th>reject</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+    
+        {% for ajob in ajobs %}    
+
+        <tr>
+            <td>{{ ajob.job_id.name }}</td>
+            <td>{{ ajob.user_id.name }}</td>
+            <td>{{ ajob.qualification }}</td>
+            <td>
+                    <a href="{{ ajob.documents.url }}" target="_blank" class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+            <td>{{ ajob.currentdate }}</td>
+            {% if ajob.status == 1 %}
+            <td>Approved</td>
+            {% else %}
+            <td>
+            <a href="{% url 'temp_job_approve' ajob.id ajob.job_id.id %}" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+            </td>
+            {% endif %}
+            {% if ajob.status == 2 %}
+            <td>Rejected</td>
+            {% else %}
+            <td><a href="{% url 'temp_job_reject' ajob.id ajob.job_id.id %}" class="btn btn-danger">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </a></td>
+            {% endif %}
+                    
+            
+        </tr>
+        
+        {% endfor %}
+        </tbody>
+    </table>
+    
+    {% endblock %}

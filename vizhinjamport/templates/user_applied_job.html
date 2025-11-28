@@ -1,0 +1,71 @@
+{% extends 'user_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-center" style="color: #ff9800;">Applied Job List</h2>
+
+    <table class="table table-striped table-bordered table-hover align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Name</th>
+                <th>Qualification</th>
+                <th>Job Name</th>
+                <th>Documents</th>
+                <th>Current Date</th>
+                <th colspan="2">Options</th>
+                <th>Approval Status</th>
+                <th>Join Session</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ajob in ajobs %}
+            <tr class="text-center">
+                <td>{{ ajob.user_id.name }}</td>
+                <td>{{ ajob.qualification }}</td>
+                <td>{{ ajob.job_id.name }}</td>
+                <td>
+                    <a href="{{ ajob.documents.url }}" target="_blank" class="btn btn-primary btn-sm">
+                        View
+                    </a>
+                </td>
+                <td>{{ ajob.currentdate }}</td>
+                {% if ajob.status != 1 and ajob.status != 2 %}
+                <td>
+                    <a href="{% url 'edit_user_applied_job' ajob.id %}" class="btn btn-warning btn-sm">Edit</a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_user_applied_job' ajob.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+                {% else %}
+                <td>
+                    <button disabled>Edit</button>
+                </td>
+                <td>
+                    <button disabled>Delete</button>
+                </td>
+                {% endif %}
+                <td>
+                    {% if ajob.status == 0 %}
+                        <span class="badge bg-secondary">Pending</span>
+                    {% elif ajob.status == 1 %}
+                        <span class="badge bg-success">Approved</span>
+                        <br>
+                        <a href="{% url 'interview_user' ajob.job_id.id %}" class="btn btn-info btn-sm mt-1">Interview</a>
+                    {% elif ajob.status == 2 %}
+                        <span class="badge bg-danger">Rejected</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if ajob.job_id.url and ajob.status == 1 %}
+                        <a href="{{ ajob.job_id.url }}" target="_blank" class="btn btn-success btn-sm">Join Session</a>
+                    {% else %}
+                        <span class="text-muted">Link not available</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

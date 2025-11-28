@@ -1,0 +1,65 @@
+{% extends 'contractor_subheader.html' %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <!-- Header -->
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0"><i class="fas fa-list-alt me-2"></i> My Complaints</h4>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th><i class="fas fa-comment me-2"></i> Complaint</th>
+                            <th><i class="fas fa-calendar-day me-2"></i> Date</th>
+                            <th><i class="fas fa-reply me-2"></i> Reply</th>
+                            <th class="text-center"><i class="fas fa-cogs me-2"></i> Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for comp in comp %}
+                        <tr>
+                            <td>{{ comp.complaint }}</td>
+                            <td>{{ comp.currentdate }}</td>
+                            <td>
+                                {% if comp.reply %}
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check-circle me-1"></i> {{ comp.reply }}
+                                    </span>
+                                {% else %}
+                                    <span class="badge bg-warning text-dark">No reply yet</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                {% if not comp.reply %}
+                                    <a href="{% url 'edit_contractor_complaint' comp.id %}" 
+                                       class="btn btn-sm btn-primary me-2">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'delete_contractor_complaint' comp.id %}" 
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('Are you sure you want to delete this complaint?');">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                <i class="fas fa-info-circle me-2"></i> No complaints found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'user_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Complaint Form -->
+    <div class="card shadow-lg rounded-3 border-0">
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0">Complaint Registration (updation)</h4>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+
+                <!-- Show existing image if available -->
+                {% if form.instance.image %}
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Current Image:</label><br>
+                        <img src="{{ form.instance.image.url }}" 
+                             alt="Complaint Image" 
+                             class="img-thumbnail d-block" 
+                             style="max-height: 200px;">
+                    </div>
+                {% endif %}
+
+                <!-- Render form fields (stacked) -->
+                {% for field in form %}
+                    <div class="col-12">
+                        <label for="{{ field.id_for_label }}" class="form-label">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <!-- Submit Button -->
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn px-4" style="background-color: #ff9800;">
+                        <i class="fas fa-save me-1"></i> Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

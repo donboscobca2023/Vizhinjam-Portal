@@ -1,0 +1,44 @@
+{% extends 'company_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="mb-3 text-center" style="color: #ff9800;">Export Charges</h3>
+
+    <table class="table table-striped table-hover table-bordered shadow-sm">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Product Category</th>
+                <th>Product Name</th>
+                <th>Amount(per unit)</th>
+                <th>Tax</th>
+                <th>Current Date</th>
+                <th colspan="2">Options</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for charge in charges %}
+            <tr>
+                <td>{{ charge.productcategory }}</td>
+                <td>{{ charge.productname }}</td>
+                <td>{{ charge.amount }}</td>
+                <td>{{ charge.tax }}</td>
+                <td>{{ charge.currentdate }}</td>
+                <td>
+                    <a href="{% url 'edit_exportcharges' charge.id %}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_exportcharges' charge.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+                
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9" class="text-center text-muted">No export charges found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

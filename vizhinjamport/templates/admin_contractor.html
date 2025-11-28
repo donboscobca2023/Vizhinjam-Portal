@@ -1,0 +1,61 @@
+{% extends 'admin_header.html' %}
+ {% block content %}
+
+
+    <!-- <h1>contractor List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <!-- <th>DOB</th> -->
+            <th>State</th>
+            <th>District</th>
+            <th>City</th>
+            <th>Reg_No</th>
+            <th>Contact</th>
+            <th>E-mail</th>
+            <th>Approve</th>
+            <th>Reject</th>
+            
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for contractor in contractors %}
+        <tr>
+            <td>{{ contractor.name }}</td>
+            <td>{{ contractor.gender }}</td>
+            <!-- <td>{{ contractor.dob }}</td> -->
+            <td>{{ contractor.state }}</td>
+            <td>{{ contractor.district }}</td>
+            <td>{{ contractor.city }}</td>
+            <td>{{ contractor.reg_no }}</td>
+            <td>{{ contractor.contact }}</td>
+            <td>{{ contractor.login_id.email }}</td>
+            {% if contractor.login_id.status == 1 %}
+            <td>Approved</td>
+            {% else %}
+            <td>
+            <a href="{% url 'contractor_approve' contractor.login_id.id %}" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+            </td>
+            {% endif %}
+            {% if contractor.login_id.status == 2 %}
+            <td>Rejected</td>
+            {% else %}
+            <td><a href="{% url 'contractor_reject' contractor.login_id.id %}" class="btn btn-danger">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </a></td>
+            {% endif %}
+
+            
+        </tr>
+        
+        {% endfor %}
+        </tbody>
+
+    </table>
+    
+ {% endblock %}

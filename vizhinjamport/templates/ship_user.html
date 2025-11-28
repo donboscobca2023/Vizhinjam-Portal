@@ -1,0 +1,72 @@
+{% extends 'user_subheader.html' %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        
+        <!-- Header -->
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0"><i class="fas fa-ship me-2"></i> Ship List</h4>
+        </div>
+
+        <div class="card-body">
+            <!-- Search Form -->
+            <form method="GET" action="" class="d-flex mb-3">
+                <input type="text" name="q" class="form-control me-2" 
+                       placeholder="Search by category, name, or destination" 
+                       value="{{ query }}">
+                <button type="submit" class="btn" >
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </form>
+
+            <!-- Ship Table -->
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Ship Category</th>
+                            <th>Ship Name</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Current Date</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in ships %}
+                        <tr>
+                            <td>{{ data.shipcategory }}</td>
+                            <td><span class="fw-bold" style="color: #ff9800;">{{ data.shipname }}</span></td>
+                            <td>{{ data.source }}</td>
+                            <td>{{ data.destination }}</td>
+                            <td>
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fas fa-calendar-alt me-1"></i>{{ data.currentdate }}
+                                </span>
+                            </td>
+{% if data.latest_status == 1 %}
+    <td>ship already left port</td>
+{% else %}
+    <td class="text-center">
+        <a href="{% url 'export' data.id %}" class="btn btn-sm btn-success">
+            <i class="fas fa-box-open me-1"></i> Export
+        </a>
+    </td>
+{% endif %}
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">
+                                <i class="fas fa-exclamation-circle me-2"></i> No results found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

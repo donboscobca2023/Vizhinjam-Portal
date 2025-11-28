@@ -1,0 +1,51 @@
+{% extends 'admin_header.html' %}
+    {% block content %}
+
+    <!-- <h1>Temp Job List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Catogory</th>
+            <th>Discription</th>
+            
+            <th>Last date to apply</th>
+            <th>current date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>View Aplictions</th>
+            <th>Add Interview</th>
+            <th>Conduct Interview</th>
+            
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for tjob in tjobs %}    
+
+        <tr>
+            <td>{{ tjob.name }}</td>
+            <td>{{ tjob.category }}</td>
+            <td>{{ tjob.discription }}</td>
+            <td>{{ tjob.lastdateapply }}</td>
+            <td>{{ tjob.currentdate }}</td>
+            <td><a href="{% url 'edit_temp_job' tjob.id %}">edit</a></td>
+            <td><a href="{% url 'delete_temp_job' tjob.id %}">delete</a></td>
+            <td><a href="{% url 'admin_applied_job_list' tjob.id %}">view</a></td>
+            {% if tjob.id in interview_jobs %}
+    <td><a href="{% url 'interview_list' tjob.id %}" class="btn btn-sm btn-info">View</a></td>
+{% else %}
+    <td><a href="{% url 'register_interview' tjob.id %}" class="btn btn-sm btn-success">Add Interview</a></td>
+{% endif %}
+            <td><a href="{% url 'interview_conducting' tjob.id %}"> Conduct interview</a></td>
+            
+        </tr>
+                                                                       
+        {% endfor %}
+
+    </tbody>
+
+    </table>
+    
+    {% endblock %}

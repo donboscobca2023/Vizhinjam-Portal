@@ -1,0 +1,48 @@
+{% extends 'admin_header.html' %}
+    {% block content %}
+    {% if messages %}
+         {% for message in messages %}
+                <p style="color:green;">{{ message }}</p>
+          {% endfor %}
+    {% endif %}
+
+    <!-- <h1>Tender List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+    <thead>
+        <tr align="center">
+            <th>Catogory</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>NO of months</th>
+            <th>Last date to apply</th>
+            <th>current date</th>
+            <th colspan="3">Options</th>
+            
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for tender in tenders %}    
+
+        <tr align="center">
+            <td>{{ tender.category }}</td>
+            <td>{{ tender.name }}</td>
+            <td>{{ tender.amount }}</td>
+            <td>{{ tender.no_of_month }}</td>
+            <td>{{ tender.last_date_apply }}</td>
+            <td>{{ tender.currentdate }}</td>
+            <td><a href="{% url 'edit_tender' tender.id %}">edit</a></td>
+            <td><a href="{% url 'delete_tender' tender.id %}">delete</a></td>
+            <td><a href="{% url 'admin_applied_tender_list' tender.id %}">view</a></td>
+            
+            
+        </tr>
+                                                                       
+        {% endfor %}
+
+    </tbody>
+
+    </table>
+    
+    {% endblock %}

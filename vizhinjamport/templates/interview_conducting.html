@@ -1,0 +1,49 @@
+
+
+<div id="root" style="width:100vw; height:80vh;"></div>
+
+<center>
+    <button id="saveVideoBtn" class="btn btn-primary">Save Video Link</button>
+</center>
+
+<script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+<script>
+window.onload = function () {
+    const roomID = Math.floor(Math.random() * 10000) + "";
+    const userID = Math.floor(Math.random() * 10000) + "";
+    const userName = "user_" + userID;
+    const appID = 606646892;
+    const serverSecret = "b4e1cab76264ec04d8ed31c0d9d0ae79";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
+    zp.joinRoom({
+        container: document.querySelector("#root"),
+        scenario: { mode: ZegoUIKitPrebuilt.VideoConference },
+        turnOnMicrophoneWhenJoining: true,
+        turnOnCameraWhenJoining: true,
+        maxUsers: 50
+    });
+
+    // Save Video Link Button
+    document.getElementById("saveVideoBtn").addEventListener("click", function() {
+        const videoURL = window.location.protocol + '//' + window.location.host + window.location.pathname + '?roomID=' + roomID;
+
+        fetch("{% url 'save_video_url' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: JSON.stringify({ url: videoURL, tempjob_id: {{ tjob.id }} }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Video link saved successfully!");
+        })
+        .catch(error => console.error(error));
+    });
+}
+</script>
+
+

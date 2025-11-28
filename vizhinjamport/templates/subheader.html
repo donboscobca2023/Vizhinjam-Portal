@@ -1,0 +1,567 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from p.w3layouts.com/demos_new/template_demo/07-12-2021/Vizhinjam-Portal-liberty-demo_Free/2009709851/web/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 May 2025 08:53:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vizhinjam-Portal</title>
+    <!-- google fonts -->
+    <link href="http://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,600&amp;display=swap" rel="stylesheet">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'user/assets/css/style-liberty.css' %}">
+</head>
+
+<body>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <script>
+        setTimeout(function() {
+        var alert = document.querySelector('.alert');
+        if (alert) {
+            alert.remove();
+        }
+        }, 3000); // 3 seconds
+    </script>    
+
+
+<script src="{% static 'user/../../../../../../../m.servedby-buysellads.com/monetization.js' %}" type="text/javascript"></script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('flexbar', 'CKYI627U', 'placement:w3layoutscom');
+  	}
+})();
+</script>
+<script>
+(function(){
+if(typeof _bsa !== 'undefined' && _bsa) {
+	// format, zoneKey, segment:value, options
+	_bsa.init('fancybar', 'CKYDL2JN', 'placement:demo');
+}
+})();
+</script>
+<script>
+(function(){
+	if(typeof _bsa !== 'undefined' && _bsa) {
+  		// format, zoneKey, segment:value, options
+  		_bsa.init('stickybox', 'CKYI653J', 'placement:w3layoutscom');
+  	}
+})();
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=G-98H8KRKT85'></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-98H8KRKT85');
+</script>
+
+<meta name="robots" content="noindex">
+<body><link rel="stylesheet" href="{% static 'user/../../../../../../assests/css/font-awesome.min.css' %}">
+<!-- New toolbar-->
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+
+#w3lDemoBar.w3l-demo-bar {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding: 40px 5px;
+  padding-top:70px;
+  margin-bottom: 70px;
+  background: #0D1326;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+#w3lDemoBar.w3l-demo-bar a {
+  display: block;
+  color: #e6ebff;
+  text-decoration: none;
+  line-height: 24px;
+  opacity: .6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#w3lDemoBar.w3l-demo-bar span.w3l-icon {
+  display: block;
+}
+
+#w3lDemoBar.w3l-demo-bar a:hover {
+  opacity: 1;
+}
+
+#w3lDemoBar.w3l-demo-bar .w3l-icon svg {
+  color: #e6ebff;
+}
+#w3lDemoBar.w3l-demo-bar .responsive-icons {
+  margin-top: 30px;
+  border-top: 1px solid #41414d;
+  padding-top: 40px;
+}
+#w3lDemoBar.w3l-demo-bar .demo-btns {
+  border-top: 1px solid #41414d;
+  padding-top: 30px;
+}
+#w3lDemoBar.w3l-demo-bar .responsive-icons a span.fa {
+  font-size: 26px;
+}
+#w3lDemoBar.w3l-demo-bar .no-margin-bottom{
+  margin-bottom:0;
+}
+.toggle-right-sidebar span {
+  background: #0D1326;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #e6ebff;
+  border-radius: 50px;
+  font-size: 26px;
+  cursor: pointer;
+  opacity: .5;
+}
+.pull-right {
+  float: right;
+  position: fixed;
+  right: 0px;
+  top: 70px;
+  width: 90px;
+  z-index: 99999;
+  text-align: center;
+}
+/* ============================================================
+RIGHT SIDEBAR SECTION
+============================================================ */
+
+#right-sidebar {
+  width: 90px;
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+  right: 0px;
+  top: 0;
+  margin-top: 60px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  overflow-y: auto;
+}
+
+
+/* ============================================================
+RIGHT SIDEBAR TOGGLE SECTION
+============================================================ */
+
+.hide-right-bar-notifications {
+  margin-right: -300px !important;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+
+
+@media (max-width: 992px) {
+  #w3lDemoBar.w3l-demo-bar a.desktop-mode{
+      display: none;
+
+  }
+}
+@media (max-width: 767px) {
+  #w3lDemoBar.w3l-demo-bar a.tablet-mode{
+      display: none;
+
+  }
+}
+@media (max-width: 568px) {
+  #w3lDemoBar.w3l-demo-bar a.mobile-mode{
+      display: none;
+  }
+  #w3lDemoBar.w3l-demo-bar .responsive-icons {
+      margin-top: 0px;
+      border-top: none;
+      padding-top: 0px;
+  }
+  #right-sidebar,.pull-right {
+      width: 90px;
+  }
+  #w3lDemoBar.w3l-demo-bar .no-margin-bottom-mobile{
+      margin-bottom: 0;
+  }
+}
+</style>
+<!-- <div class="pull-right toggle-right-sidebar">
+<span class="fa title-open-right-sidebar tooltipstered fa-angle-double-right"></span>
+</div>
+
+<div id="right-sidebar" class="right-sidebar-notifcations nav-collapse">
+<div class="bs-example bs-example-tabs right-sidebar-tab-notification" data-example-id="togglable-tabs">
+
+    <div id="w3lDemoBar" class="w3l-demo-bar">
+        <div class="demo-btns">
+        <a href="https://w3layouts.com/?p=4763800000223791">
+            <span class="w3l-icon -back">
+                <span class="fa fa-arrow-left"></span>
+            </span>
+            <span class="w3l-text">Back</span>
+        </a>
+        <a href="https://w3layouts.com/?p=4763800000223791">
+            <span class="w3l-icon -download">
+                <span class="fa fa-download"></span>
+            </span>
+            <span class="w3l-text">Download</span>
+        </a>
+        <a href="https://w3layouts.com/checkout/?add-to-cart=4763800000223791" class="no-margin-bottom-mobile">
+            <span class="w3l-icon -buy">
+                <span class="fa fa-shopping-cart"></span>
+            </span>
+            <span class="w3l-text">Buy</span>
+        </a>
+    </div>
+        <!---<div class="responsive-icons">
+            <a href="#url" class="desktop-mode">
+                <span class="w3l-icon -desktop">
+                    <span class="fa fa-desktop"></span>
+                </span>
+            </a>
+            <a href="#url" class="tablet-mode">
+                <span class="w3l-icon -tablet">
+                    <span class="fa fa-tablet"></span>
+                </span>
+            </a>
+            <a href="#url" class="mobile-mode no-margin-bottom">
+                <span class="w3l-icon -mobile">
+                    <span class="fa fa-mobile"></span>
+                </span>
+            </a>
+        </div>-->
+    </div>
+    <div class="right-sidebar-panel-content animated fadeInRight" tabindex="5003"
+        style="overflow: hidden; outline: none;">
+    </div>
+</div>
+</div>
+</div>
+
+    <!--/Header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke py-lg-0">
+                <h1 class="navbar-brand">
+                    <!-- <a class="navbar-brand" href="{% url 'landing' %}"> -->
+                        <span class="sub-color">Vizhinjam</span>Portal
+                    <!-- </a> -->
+                </h1>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav mx-lg-auto my-2 my-lg-0 navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'landing' %}">Home</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="services.html">Services</a>
+                        </li> -->
+                        <!-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#pages" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ship info<span class="fa fa-angle-down ms-1"></span>
+                            </a> -->
+                            <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item pt-2" href="{% url 'ship_list' %}">ship list</a></li>
+                                <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
+
+                                <li><a class="dropdown-item" href="email.html">Email Page</a></li>
+                                <li><a class="dropdown-item" href="elements.html">Elements</a></li>
+
+                                <li><a class="dropdown-item" href="landing.html">Landing Page</a></li>
+
+                                <li><a class="dropdown-item" href="error.html">Error Page</a></li>
+                            </ul> -->
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#registration" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Registration <span class="fa fa-angle-down ms-1"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item pt-2" href="{% url 'register_user' %}">User</a></li>
+                                <li><a class="dropdown-item pt-2" href="{% url 'register_company' %}">Company</a></li>
+                                <li><a class="dropdown-item pt-2" href="{% url 'register_contractor' %}">Contractor</a></li>
+
+                                
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'news_list' %}">News</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>  -->
+                    </ul>
+                    <!-- login -->
+                    <div class="col-lg-1 sub-two-right">
+                     <a href="{% url 'userlogin' %}"><button type="button" class="btn" style="color: #fff;background-color: var(--primary-color);border-color: var(--primary-color);" >Login</button></a>
+                    </div>
+                     <!--/search-->
+                    <!-- <button id="trigger-overlay" class="searchw3-icon me-xl-4 me-lg-3" type="button"><i class="fas fa-search"></i></button> -->
+                    <!-- open/close -->
+                    <!-- <div class="overlay overlay-slidedown">
+                        <button type="button" class="overlay-close"><i class="fas fa-times"></i></button>
+                        <nav class="w3l-formhny">
+                            <form action="#" method="GET" class="d-sm-flex search-header">
+                                <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search" required>
+                                <button class="btn btn-style btn-secondary me-lg-3" type="submit">Search</button>
+                            </form>
+                        </nav>
+                    </div> -->
+                    <!--//search-->
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--//Header-->
+    <!--/inner-page-->
+    <div class="inner-banner py-5">
+        <section class="w3l-breadcrumb text-left py-sm-5 ">
+            <div class="container">
+                <div class="w3breadcrumb-gids">
+                    <div class="w3breadcrumb-left text-left">
+                        <!-- <h2 class="inner-w3-title mt-sm-5 mt-4">
+                            Registration  </h2> -->
+
+                    </div>
+                    <!-- <div class="w3breadcrumb-right">
+                        <ul class="breadcrumbs-custom-path">
+                            <li><a href="{% url 'landing' %}">Home</a></li>
+                            <li class="active"><span class="fas fa-angle-double-right mx-2"></span> Blog </li>
+                        </ul>
+                    </div> -->
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!--//inner-page-->
+	<div style="margin: 8px auto; display: block; text-align:center;">
+
+<!---728x90--->
+
+ 
+</div>
+    <!--/blog-section-->
+    <section class="w3l-blog-single">
+        <div class="container py-md-3"> 
+            <!-- <div class="single blog py-5"> -->
+                <!-- <div class="container py-lg-5 py-md-4"> -->
+                <!-- <div class="mb-3"></div> -->
+                <!-- add the block here -->
+                {% block content %}
+                {% endblock %}
+                <!-- </div> -->
+
+                <!-- </div> -->
+            </div>
+        </div>
+    </section>
+    <!--//blog-section-->
+	<!-- <section class="w3l-features py-5">
+    <div style="margin: 8px auto; display: block; text-align:left;"> -->
+
+<!---728x90--->
+    <!-- <div class="bd-example">
+    <div class="my-5">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="[email protected]">
+    </div>                        
+    <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div> 
+    </div> -->
+    <!-- </div>
+    </section> -->
+
+    <!--/footer-9-->
+    <footer class="w3l-footer9">
+        <section class="footer-inner-main py-5">
+            <!-- <div class="container py-md-3"> -->
+                <!-- <div class="right-side"> -->
+                    <div class="row footer-hny-grids sub-columns">
+                        <div class="col-lg-1 sub-two-right"></div>
+                        <div class="col-lg-4 sub-one-left">
+                            <h6>About </h6>
+                            <p class="footer-phny pe-lg-5">Since 2015, Vizhinjam International Seaport has grown into a premier deep-water transshipment hub, offering world-class infrastructure and global connectivity.</p>
+                            
+                        </div>
+                        <div class="col-lg-1 sub-two-right"></div>
+                        <div class="col-lg-3 sub-two-right">
+                            <h6>Contact Us</h6>
+                            <ul>
+                                <li><i class="fas fa-angle-right"></i>vizhinjamport123@gmail.com
+                                </li>
+                                <li><i class="fas fa-angle-right"></i>9048026231,9207071037
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="col-lg-3 sub-two-right">
+                            <h6>Latest News</h6>
+                            <ul>
+                                <li><a href="{% url 'news_list' %}"><i class="fas fa-angle-right"></i>News</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                <!-- </div> -->
+                <div class="below-section mt-5">
+                    <div class="copyright-footer">
+                        <div class="col-lg-1 sub-two-right"></div>
+                        <div class="columns text-left">
+                            <p>© 2025 Vizhinjam-Portal. All rights reserved. 
+                                <!-- Design by <a href="" target="_blank"></a> -->
+                                </p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            <!-- </div> -->
+        </section>
+
+        <!-- Js scripts -->
+        <!-- move top -->
+        <button onclick="topFunction()" id="movetop" title="Go to top">
+            <span class="fas fa-level-up-alt" aria-hidden="true"></span>
+        </button>
+        <script>
+            // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("movetop").style.display = "block";
+                } else {
+                    document.getElementById("movetop").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+        </script>
+        <!-- //move top -->
+    </footer>
+    <!--//footer-9 -->
+    <!-- Template JavaScript -->
+    <script src="{% static 'user/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'user/assets/js/theme-change.js' %}"></script>
+    <!--/search-->
+    <script src="{% static 'user/assets/js/modernizr.custom.js' %}"></script>
+    <script src="{% static 'user/assets/js/classie.js' %}"></script>
+    <script src="{% static 'user/assets/js/demo1.js' %}"></script>
+    <!--//search-->
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function() {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function() {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function() {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function() {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function() {
+            $('.navbar-toggler').click(function() {
+                $('body').toggleClass('noscroll');
+            })
+        });
+
+    </script>
+    <!-- //disable body scroll which navbar is in active -->
+    <!-- //bootstrap -->
+    <script src="{% static 'user/assets/js/bootstrap.min.js' %}"></script>
+
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9401669a9a21a91a',t:'MTc0NzI5OTE2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='../../../../../../cdn-cgi/challenge-platform/h/g/scripts/jsd/6fab0cec561d/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+
+<!-- Mirrored from p.w3layouts.com/demos_new/template_demo/07-12-2021/factorship-liberty-demo_Free/2009709851/web/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 15 May 2025 08:53:22 GMT -->
+</html>

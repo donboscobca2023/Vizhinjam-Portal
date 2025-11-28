@@ -1,0 +1,37 @@
+{% extends 'admin_header.html' %}
+    {% block content %}
+    {% if messages %}
+         {% for message in messages %}
+            <p style="color:green;">{{ message }}</p>
+          {% endfor %}
+    {% endif %}
+
+    <!-- <h1>News List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+    <thead>
+        <tr align="center">
+            <th>News</th>
+            <th>current date</th>
+            <th>Options</th>
+            <th></th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        {% for news in newss %}    
+
+        <tr align="center">
+            <td>{{ news.news }}</td>
+            <td>{{ news.currentdate }}</td>
+            <td><a href="{% url 'edit_news' news.id %}">edit</a></td>
+            <td><a href="{% url 'delete_news' news.id %}">delete</a></td>
+        </tr>
+                                                                       
+        {% endfor %}
+
+    </tbody>
+
+    </table>
+    
+    {% endblock %}

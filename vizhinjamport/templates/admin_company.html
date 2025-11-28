@@ -1,0 +1,52 @@
+{% extends 'admin_header.html' %}
+ {% block content %}
+
+
+    <table id="basic-datatables" class="display table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>State</th>
+            <th>District</th>
+            <th>City</th>
+            <th>Reg_No</th>
+            <th>Contact</th>
+            <th>E-mail</th>
+            <th>Approve</th>
+            <th>Reject</th>
+        </tr>
+    </thead>
+       <tbody>
+        {% for company in companys %}
+        <tr>
+            <td>{{ company.company_name }}</td>
+            <td>{{ company.state }}</td>
+            <td>{{ company.district }}</td>
+            <td>{{ company.city }}</td>
+            <td>{{ company.reg_no }}</td>
+            <td>{{ company.contact }}</td>
+            <td>{{ company.login_id.email }}</td>
+            {% if company.login_id.status == 1 %}
+            <td>Approved</td>
+            {% else %}
+            <td>
+            <a href="{% url 'company_approve' company.login_id.id %}" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+            </td>
+            {% endif %}
+            {% if company.login_id.status == 2 %}
+            <td>Rejected</td>
+            {% else %}
+            <td><a href="{% url 'company_reject' company.login_id.id %}" class="btn btn-danger">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </a></td>
+            {% endif %}
+            
+        </tr>
+        
+        {% endfor %}
+        </tbody>
+
+    </table>
+ {% endblock %}    

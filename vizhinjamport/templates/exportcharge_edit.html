@@ -1,0 +1,78 @@
+{% extends 'company_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0">Add Export Chrages</h4>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (make sure it's loaded only once) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){  // DOM ready
+
+    const productChoices = {
+        'Electronics': [
+            {value: 'Laptop&parts', text: 'Laptop & Parts'},
+            {value: 'electronic gadgets', text: 'Electronic Gadgets'},
+            {value: 'mobile phones', text: 'Mobile Phones'},
+            {value: 'television', text: 'Television'}
+        ],
+        'Furniture': [
+            {value: 'Chair', text: 'Chair'},
+            {value: 'Table', text: 'Table'},
+            {value: 'sofa', text: 'Sofa'},
+            {value: 'bed', text: 'Bed'}
+        ]
+    };
+
+    function populateProducts(category, selectedValue = '') {
+        var productSelect = $("#id_productname");
+        productSelect.empty();
+        productSelect.append($('<option>', { value: '', text: '--- Select Product ---' }));
+        if (category && productChoices[category]) {
+            productChoices[category].forEach(function (item) {
+                productSelect.append($('<option>', {
+                    value: item.value,
+                    text: item.text
+                }));
+            });
+            if (selectedValue) {
+                productSelect.val(selectedValue);
+            }
+        }
+    }
+
+    // On change populate list
+    $("#id_productcategory").on('change', function () {
+        populateProducts($(this).val());
+    });
+
+    // On page load (for validation error case)
+    const initialCategory = $("#id_productcategory").val();
+    const initialProduct = $("#id_productname").val();
+    if (initialCategory) {
+        populateProducts(initialCategory, initialProduct);
+    }
+});
+</script>
+
+{% endblock %}

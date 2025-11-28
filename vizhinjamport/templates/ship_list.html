@@ -1,0 +1,49 @@
+{% extends 'company_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <h3 class="mb-3 text-center" style="color: #ff9800;">Ship List</h3>
+
+    <table class="table table-striped table-hover table-bordered shadow-sm">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Ship Category</th>
+                <th>Ship Name</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Current Date</th>
+                <th colspan="2">Options</th>
+                <th colspan="2">Tracking</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ship in ships %}
+            <tr>
+                <td>{{ ship.shipcategory }}</td>
+                <td>{{ ship.shipname }}</td>
+                <td>{{ ship.source }}</td>
+                <td>{{ ship.destination }}</td>
+                <td>{{ ship.currentdate }}</td>
+                <td>
+                    <a href="{% url 'edit_ship' ship.id %}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_ship' ship.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+                <td>
+                    <a href="{% url 'ship_track' ship.id %}" class="btn btn-sm btn-primary">Update</a>
+                </td>
+                <td>
+                    <a href="{% url 'ship_track_list' ship.id %}" class="btn btn-sm btn-success">View Locations</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="9" class="text-center text-muted">No ships found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

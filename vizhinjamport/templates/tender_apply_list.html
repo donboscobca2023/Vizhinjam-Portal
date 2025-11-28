@@ -1,0 +1,78 @@
+{% extends 'contractor_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0">My Tender Applications</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Category</th>
+                        <th>Tender Name</th>
+                        <th>Amount</th>
+                        <th>Applied On</th>
+                        <th colspan="2" class="text-center">Options</th>
+                        <th>Approval Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tender in tenders %}
+                        <tr>
+                            <td>{{ tender.tender_id.category }}</td>
+                            <td>{{ tender.tender_id.name }}</td>
+                            <td>₹ {{ tender.amount }}</td>
+                            <td>{{ tender.currentdate }}</td>
+
+                            {% if tender.applystatus == 0 %}
+                                <!-- Pending -->
+                                <td>
+                                    <a href="{% url 'edit_apply_tender' tender.id %}" 
+                                       class="btn btn-sm btn-outline-primary">
+                                        Edit
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_apply_tender' tender.id %}" 
+                                       class="btn btn-sm btn-outline-danger"
+                                       onclick="return confirm('Are you sure you want to delete this application?');">
+                                        Delete
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="badge bg-warning text-dark">Pending...</span>
+                                </td>
+
+                            {% elif tender.applystatus == 1 %}
+                                <!-- Approved -->
+                                <td><span class="text-muted"><i class="fas fa-ban"></i> Edit</span></td>
+                                <td><span class="text-muted"><i class="fas fa-ban"></i> Delete</span></td>
+                                <td>
+                                    <span class="badge bg-success">Approved</span>
+                                </td>
+
+                            {% elif tender.applystatus == 2 %}
+                                <!-- Rejected -->
+                                <td><span class="text-muted"><i class="fas fa-ban"></i> Edit</span></td>
+                                <td><span class="text-muted"><i class="fas fa-ban"></i> Delete</span></td>
+                                <td>
+                                    <span class="badge bg-danger">Rejected</span>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                No tender applications found.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

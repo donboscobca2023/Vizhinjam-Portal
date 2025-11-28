@@ -1,0 +1,48 @@
+{% extends 'company_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0">{{ ship.shipname }} Location Tracking</h4>
+        </div>
+        <div class="card-body">
+            {% if locs %}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover text-center align-middle">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th>Location</th>
+                                <th>Time</th>
+                                <th>Date</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for loc in locs %}
+                            <tr>
+                                <td>{{ loc.currentlocation }}</td>
+                                <td>{{ loc.time }}</td>
+                                <td>{{ loc.date }}</td>
+                                <td>
+                                    <a href="{% url 'edit_ship_track' loc.id ship.id %}" 
+                                       class="btn btn-sm btn-warning">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'delete_ship_track' loc.id ship.id %}" 
+                                       class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-center text-muted fs-5 my-3"><b>No tracking records found.</b></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

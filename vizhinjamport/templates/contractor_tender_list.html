@@ -1,0 +1,64 @@
+{% extends 'contractor_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header text-white text-center" style="background-color: #ff9800;">
+            <h4 class="mb-0">Available Tenders</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-bordered align-middle text-center">
+                <thead class="table-secondary">
+                    <tr>
+                        <th>Category</th>
+                        <th>Tender Name</th>
+                        <th>Amount (₹)</th>
+                        <th>Duration</th>
+                        <th>Last Date to Apply</th>
+                        <th>Published On</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for tender in tenders %}
+                        <tr>
+                            <td>{{ tender.category }}</td>
+                            <td>{{ tender.name }}</td>
+                            <td>₹ {{ tender.amount }}</td>
+                            <td>{{ tender.no_of_month }} Months</td>
+                            <td>{{ tender.last_date_apply }}</td>
+                            <td>{{ tender.currentdate }}</td>
+
+                            {% if today >= tender.last_date_apply %}
+                                <!-- Expired -->
+                                <td>
+                                    <span class="badge bg-danger">Expired</span>
+                                </td>
+                            {% else %}
+                                <td>
+                                    {% if tender.id in applied_tenders %}
+                                        <span class="badge bg-info text-dark">Applied</span>
+                                    {% else %}
+                                        <a href="{% url 'apply_tender' tender.id %}" 
+                                           class="btn btn-sm btn-success">
+                                           Apply
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center text-muted">
+                                No tenders available.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

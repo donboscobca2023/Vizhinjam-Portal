@@ -1,0 +1,49 @@
+{% extends 'admin_header.html' %}
+    {% block content %}
+
+    <!-- <h1>Tender List</h1> -->
+    <table class="table table table-bordered">
+        <tr>
+            <th>Catogory</th>
+            <th>Tender Name</th>
+            <th>Contractor Name</th>
+            <th>Amount</th>
+            <th>current date</th>
+            <th>approve</th>
+            <th>reject</th>
+            
+        </tr>
+    
+        {% for tender in tenders %}    
+
+        <tr>
+            <td>{{ tender.tender_id.category }}</td>
+            <td>{{ tender.tender_id.name }}</td>
+            <td>{{ tender.contractor_id.name }}</td>
+            <td>{{ tender.amount }}</td>
+            <td>{{ tender.currentdate }}</td>
+            {% if tender.applystatus == 1 %}
+            <td>Approved</td>
+            {% else %}
+            <td>
+            <a href="{% url 'tender_approve' tender.id %}" class="btn btn-success">
+                <i class="fa fa-check" aria-hidden="true"></i>
+            </a>
+            </td>
+            {% endif %}
+            {% if tender.applystatus == 2 %}
+            <td>Rejected</td>
+            {% else %}
+            <td><a href="{% url 'tender_reject' tender.id %}" class="btn btn-danger">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </a></td>
+            {% endif %}
+                    
+            
+        </tr>
+        
+        {% endfor %}
+
+    </table>
+    
+    {% endblock %}

@@ -1,0 +1,15 @@
+
+    <h2>Login</h2>
+    {% if msg %}
+                <p style="color:rgb(114, 0, 0);">{{ msg }}</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="email" placeholder="example" name="email">
+        <br>
+        <input type="password" placeholder="password" name="password">
+        <br>
+        
+        <button type="submit">Login</button>
+
+    </form>       

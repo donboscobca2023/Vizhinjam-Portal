@@ -1,0 +1,42 @@
+{% extends 'admin_header.html' %}
+ {% block content %}
+
+
+    <!-- <h1>Complaint List</h1> -->
+    <table id="basic-datatables" class="display table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Usertype</th>
+            <th>E-mail</th>
+            <th>Complaint</th>
+            <th>reply</th>
+            <th>currentdate</th>
+            <th>options</th> 
+            
+            
+        </tr>
+        </thead>
+        <tbody>
+        
+        {% for comp in comp %}
+        <tr>
+            <th>{{ comp.login_id.usertype }}</td>
+            <td>{{ comp.login_id.email }}</td>
+            <td>{{ comp.complaint }}</td>
+            <td>{{ comp.reply }}</td>
+            <td>{{ comp.currentdate }}</td>
+            
+            <td>
+                
+                <a href="{% url 'admin_reply' comp.id %}">reply</a></td>
+            
+            
+            
+        </tr>
+        
+        {% endfor %}
+        </tbody>
+
+    </table>
+    
+ {% endblock %}

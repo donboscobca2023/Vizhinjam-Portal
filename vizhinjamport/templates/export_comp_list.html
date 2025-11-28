@@ -1,0 +1,77 @@
+{% extends 'company_subheader.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header text-white" style="background-color:  #ff9800;">
+            <h4 class="mb-0">Export List</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Product Category</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Recipient Name</th>
+                            <th>Recipient Address</th>
+                            <th>Recipient Contact</th>
+                            <th>Recipient Email</th>
+                            <th>Source</th>
+                            <th>Destination</th>
+                            <th>Ship Name</th>
+                            <th>Complaints</th>
+                            <th>Refund</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in exports %}
+                        <tr>
+                            <td>{{ data.publicid.name }}</td>
+                            <td>{{ data.publicid.login_id.email }}</td>
+                            <td>{{ data.productcategory }}</td>
+                            <td>{{ data.productname }}</td>
+                            <td>{{ data.quantity }}</td>
+                            <td>{{ data.recipientname }}</td>
+                            <td>{{ data.recipientaddress }}</td>
+                            <td>{{ data.recipientcontact }}</td>
+                            <td>{{ data.recipientemail }}</td>
+                            <td>{{ data.source }}</td>
+                            <td>{{ data.destination }}</td>
+                            <td>{{ data.shipid.shipname }}</td>
+                            <td>
+                                <a href="{% url 'complaint_complist' data.id %}" class="btn btn-sm btn-warning">
+                                    View
+                                </a>
+                            </td>
+                            <td>
+    {% if data.complaint_set.exists %}
+        {% if data.refundstatus == 0 %}
+            <a href="{% url 'refund_export' data.id %}" class="btn btn-sm btn-danger">
+                Refund
+            </a>
+        {% else %}
+            <span class="badge bg-success">Refunded</span>
+        {% endif %}
+    {% else %}
+        <span class="text-muted">No complaints</span>
+    {% endif %}
+</td>
+
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="14" class="text-muted">No export records found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

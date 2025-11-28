@@ -1,0 +1,45 @@
+{% extends 'user_subheader.html' %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        
+        <!-- Header -->
+        <div class="card-header text-white" style="background-color: #ff9800;">
+            <h4 class="mb-0"><i class="fas fa-comment-dots me-2"></i> My Complaint</h4>
+        </div>
+
+        <div class="card-body">
+            <!-- Messages -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="fas fa-check-circle me-2"></i> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <!-- Complaint Form -->
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.subject.label_tag }}
+                    {{ form.subject }}
+                </div>
+                <div class="mb-3">
+                    {{ form.complaint.label_tag }}
+                    {{ form.complaint }}
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-lg px-5 text-white" style="background-color: #ff9800;">
+                        <i class="fas fa-paper-plane me-2"></i> Register Complaint
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
